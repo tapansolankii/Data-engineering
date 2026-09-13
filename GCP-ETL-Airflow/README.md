@@ -1,7 +1,7 @@
 # Building Data Pipeline with Google Cloud Platform,Airflow-> Looker
 
 ## ETL Pipeline Process:-
-Data Source-> Cloud Composer (Airflow) -> Storage-> Function->  ETL-Filtering,Phrasing,Validation(Dataflow) -> BigQuery -> Visualize(Looker)
+Data Source-> Cloud Composer (Airflow) -> Storage-> Function->  ETL(Dataflow) -> BigQuery -> Visualize(Looker)
 
 
 ### Architecture
