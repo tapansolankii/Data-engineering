@@ -9,14 +9,14 @@ def trigger_df_job(cloud_event,environment):
     template_path = "gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery"
 
     template_body = {
-        "jobName": "bq-load",  # Provide a unique name for the job
-        "parameters": {
-        "javascriptTextTransformGcsPath": "gs://**/udf.js",
-        "JSONPath": "gs://**/bq.json",
-        "javascriptTextTransformFunctionName": "transform",
-        "outputTable": "Project-df-cric:cricket_dataset.icc_odi_batsman_ranking",
-        "inputFilePattern": "gs://**/batsmen_rankings.csv",
-        "bigQueryLoadingTemporaryDirectory": "gs://dataflow-metadata",
+      {        "jobName": "bq-load",  # Provide a unique name for the job
+               "parameters": {
+               "javascriptTextTransformGcsPath": "gs://**/udf.js",
+               "JSONPath": "gs://**/bq.json",
+               "javascriptTextTransformFunctionName": "transform",
+               "outputTable": "Project-df-cric:cricket_dataset.icc_odi_batsman_ranking",
+               "inputFilePattern": "gs://**/batsmen_rankings.csv",
+               "bigQueryLoadingTemporaryDirectory": "gs://dataflow-metadata",
         }
     }
 
