@@ -6,7 +6,7 @@ import os
 def trigger_df_job():
  
     service = build('dataflow', 'v1b3')
-    project = "prj-poc-001"
+    project = "project-cricket-de"
 
     template_path = "gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery"
 
