@@ -2,8 +2,8 @@ from googleapiclient.discovery import build
 import base64
 import google.auth
 import os
-
-def hello_pubsub():   
+# function name entry point in GCL
+def trigger_df_job():
  
     service = build('dataflow', 'v1b3')
     project = "prj-poc-001"
@@ -11,14 +11,14 @@ def hello_pubsub():
     template_path = "gs://dataflow-templates-us-central1/latest/GCS_Text_to_BigQuery"
 
     template_body = {
-        "jobName": "bq-load",  # Provide a unique name for the job
-        "parameters": {
-        "javascriptTextTransformGcsPath": "gs://bkt-dataflow-metadata/udf.js",
-        "JSONPath": "gs://bkt-dataflow-metadata/bq.json",
-        "javascriptTextTransformFunctionName": "transform",
-        "outputTable": "prj-poc-001:cricket_dataset.icc_odi_batsman_ranking",
-        "inputFilePattern": "gs://bkt-dataflow-metadata/batsmen_rankings.csv",
-        "bigQueryLoadingTemporaryDirectory": "gs://bkt-dataflow-metadata",
+         "jobName": "bq-load",  # Provide a unique name for the job
+               "parameters": {
+               "javascriptTextTransformGcsPath": "gs://**/udf.js",
+               "JSONPath": "gs://**/bq.json",
+               "javascriptTextTransformFunctionName": "transform",
+               "outputTable": "Project-df-cric:cricket_dataset.icc_odi_batsman_ranking",
+               "inputFilePattern": "gs://**/batsmen_rankings.csv",
+               "bigQueryLoadingTemporaryDirectory": "gs://dataflow-metadata",
         }
     }
 
@@ -26,4 +26,4 @@ def hello_pubsub():
     response = request.execute()
     print(response)
 
-hello_pubsub()
+trigger_df_job()
